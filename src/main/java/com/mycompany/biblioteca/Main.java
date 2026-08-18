@@ -5,11 +5,14 @@ import java.util.Scanner;
 
 public class Main {
     static ArrayList<Cliente> clientes = new ArrayList<>();
+    static ArrayList<Libro> libros = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         // Aquí irá el menú (Fase 8)
     }
+    
+    //CLIENTE
     
     static void crearCliente() {
         System.out.println("--- Crear Cliente ---");
@@ -81,4 +84,20 @@ public class Main {
         System.out.println("Cliente eliminado.");
     }
     
+    //LIBRO
+        static void crearLibro() {
+        System.out.println("--- Crear Libro ---");
+        System.out.print("Código: ");
+        String codigo = sc.nextLine();
+        System.out.print("Título: ");
+        String titulo = sc.nextLine();
+        System.out.print("Año de publicación: ");
+        int anio = Integer.parseInt(sc.nextLine());
+        System.out.print("Autor: ");
+        String autor = sc.nextLine();
+
+        Libro l = new Libro(codigo, titulo, anio, autor);
+        libros.add(l);
+        System.out.println("Libro creado con éxito.");
+    }
 }
