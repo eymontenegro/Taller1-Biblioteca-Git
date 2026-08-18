@@ -100,4 +100,15 @@ public class Main {
         libros.add(l);
         System.out.println("Libro creado con éxito.");
     }
+ 
+    static void listarLibros() {
+        System.out.println("--- Lista de Libros ---");
+        if (libros.isEmpty()) {
+            System.out.println("No hay libros registrados.");
+            return;
+        }
+        for (Libro l : libros) {
+            System.out.println(l.toString());
+        }
+    }
 }
