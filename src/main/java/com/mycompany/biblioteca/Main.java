@@ -120,6 +120,26 @@ public class Main {
         }
         return null;
     }
+
+    static void actualizarLibro() {
+        System.out.print("Código del libro a actualizar: ");
+        String codigo = sc.nextLine();
+        Libro l = buscarLibro(codigo);
+
+        if (l == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+
+        System.out.print("Nuevo título (" + l.getTitulo() + "): ");
+        l.setTitulo(sc.nextLine());
+        System.out.print("Nuevo año (" + l.getAnioPublicacion() + "): ");
+        l.setAnioPublicacion(Integer.parseInt(sc.nextLine()));
+        System.out.print("Nuevo autor (" + l.getAutor() + "): ");
+        l.setAutor(sc.nextLine());
+
+        System.out.println("Libro actualizado.");
+    }
     
     
 }
