@@ -5,13 +5,73 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+
     static ArrayList<Cliente> clientes = new ArrayList<>();
     static ArrayList<Libro> libros = new ArrayList<>();
     static ArrayList<Prestamo> prestamos = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // Aquí irá el menú (Fase 8)
+        int opcion;
+        do {
+            System.out.println("\n===== SISTEMA DE BIBLIOTECA =====");
+            System.out.println("1. Crear cliente");
+            System.out.println("2. Listar clientes");
+            System.out.println("3. Actualizar cliente");
+            System.out.println("4. Eliminar cliente");
+            System.out.println("5. Crear libro");
+            System.out.println("6. Listar libros");
+            System.out.println("7. Actualizar libro");
+            System.out.println("8. Eliminar libro");
+            System.out.println("9. Registrar préstamo");
+            System.out.println("10. Registrar devolución");
+            System.out.println("11. Listar préstamos activos");
+            System.out.println("0. Salir");
+            System.out.print("Elige una opción: ");
+
+            opcion = Integer.parseInt(sc.nextLine());
+
+            switch (opcion) {
+                case 1:
+                    crearCliente();
+                    break;
+                case 2:
+                    listarClientes();
+                    break;
+                case 3:
+                    actualizarCliente();
+                    break;
+                case 4:
+                    eliminarCliente();
+                    break;
+                case 5:
+                    crearLibro();
+                    break;
+                case 6:
+                    listarLibros();
+                    break;
+                case 7:
+                    actualizarLibro();
+                    break;
+                case 8:
+                    eliminarLibro();
+                    break;
+                case 9:
+                    crearPrestamo();
+                    break;
+                case 10:
+                    devolucion();
+                    break;
+                case 11:
+                    listarPrestamos();
+                    break;
+                case 0:
+                    System.out.println("Saliendo del sistema...");
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        } while (opcion != 0);
     }
     
     //CLIENTE
