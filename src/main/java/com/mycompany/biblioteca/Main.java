@@ -5,11 +5,14 @@ import java.util.Scanner;
 
 public class Main {
     static ArrayList<Cliente> clientes = new ArrayList<>();
+    static ArrayList<Libro> libros = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         // Aquí irá el menú (Fase 8)
     }
+    
+    //CLIENTE
     
     static void crearCliente() {
         System.out.println("--- Crear Cliente ---");
@@ -81,4 +84,74 @@ public class Main {
         System.out.println("Cliente eliminado.");
     }
     
+    //LIBRO
+        static void crearLibro() {
+        System.out.println("--- Crear Libro ---");
+        System.out.print("Código: ");
+        String codigo = sc.nextLine();
+        System.out.print("Título: ");
+        String titulo = sc.nextLine();
+        System.out.print("Año de publicación: ");
+        int anio = Integer.parseInt(sc.nextLine());
+        System.out.print("Autor: ");
+        String autor = sc.nextLine();
+
+        Libro l = new Libro(codigo, titulo, anio, autor);
+        libros.add(l);
+        System.out.println("Libro creado con éxito.");
+    }
+ 
+    static void listarLibros() {
+        System.out.println("--- Lista de Libros ---");
+        if (libros.isEmpty()) {
+            System.out.println("No hay libros registrados.");
+            return;
+        }
+        for (Libro l : libros) {
+            System.out.println(l.toString());
+        }
+    }
+    
+    static Libro buscarLibro(String codigo) {
+        for (Libro l : libros) {
+            if (l.getCodigo().equals(codigo)) {
+                return l;
+            }
+        }
+        return null;
+    }
+
+    static void actualizarLibro() {
+        System.out.print("Código del libro a actualizar: ");
+        String codigo = sc.nextLine();
+        Libro l = buscarLibro(codigo);
+
+        if (l == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+
+        System.out.print("Nuevo título (" + l.getTitulo() + "): ");
+        l.setTitulo(sc.nextLine());
+        System.out.print("Nuevo año (" + l.getAnioPublicacion() + "): ");
+        l.setAnioPublicacion(Integer.parseInt(sc.nextLine()));
+        System.out.print("Nuevo autor (" + l.getAutor() + "): ");
+        l.setAutor(sc.nextLine());
+
+        System.out.println("Libro actualizado.");
+    }
+   
+    static void eliminarLibro() {
+        System.out.print("Código del libro a eliminar: ");
+        String codigo = sc.nextLine();
+        Libro l = buscarLibro(codigo);
+
+        if (l == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+
+        libros.remove(l);
+        System.out.println("Libro eliminado.");
+    }
 }
