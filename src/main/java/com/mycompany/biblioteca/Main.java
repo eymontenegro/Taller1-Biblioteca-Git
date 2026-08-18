@@ -192,18 +192,32 @@ public class Main {
     }
 
     static void devolucion() {
-    System.out.print("ID del préstamo a devolver: ");
-    String idPrestamo = sc.nextLine();
+        System.out.print("ID del préstamo a devolver: ");
+        String idPrestamo = sc.nextLine();
 
-    for (Prestamo p : prestamos) {
-        if (p.getIdPrestamo().equals(idPrestamo) && p.getEstado().equals("ACTIVO")) {
-            p.setEstado("DEVUELTO");
-            p.getLibro().setDisponible(true);
-            System.out.println("Devolución registrada con éxito.");
-            return;
+        for (Prestamo p : prestamos) {
+            if (p.getIdPrestamo().equals(idPrestamo) && p.getEstado().equals("ACTIVO")) {
+                p.setEstado("DEVUELTO");
+                p.getLibro().setDisponible(true);
+                System.out.println("Devolución registrada con éxito.");
+                return;
+            }
+        }
+        System.out.println("Préstamo no encontrado o ya fue devuelto.");
+    }
+
+    static void listarPrestamos() {
+        System.out.println("--- Préstamos Activos ---");
+        boolean hay = false;
+        for (Prestamo p : prestamos) {
+            if (p.getEstado().equals("ACTIVO")) {
+                System.out.println(p.toString());
+                hay = true;
+            }
+        }
+        if (!hay) {
+            System.out.println("No hay préstamos activos.");
         }
     }
-    System.out.println("Préstamo no encontrado o ya fue devuelto.");
-}
-    
+
 }
