@@ -27,4 +27,16 @@ public class Main {
         System.out.println("Cliente creado con éxito.");
     }
     
+    static void listarClientes() {
+        System.out.println("--- Lista de Clientes ---");
+        if (clientes.isEmpty()) {
+            System.out.println("No hay clientes registrados.");
+            return;
+        }
+        for (Cliente c : clientes) {
+            System.out.println(c.toString());
+        }
+    }
+    
+    
 }
